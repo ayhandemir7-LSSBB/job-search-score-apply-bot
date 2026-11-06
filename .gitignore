@@ -1,1 +1,12 @@
+# Personal documents, the vector database, the job board and generated drafts stay on this machine
+data/
+# Secrets and Google OAuth files
 .env
+credentials.json
+token.json
+# Python and tool caches
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.gradio/
+flagged/
