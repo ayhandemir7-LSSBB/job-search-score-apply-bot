@@ -52,7 +52,7 @@ Google Drive folder ──drive_sync.py──▶ data/drive  (mirror + manifest.
 conda activate bootcamp-env            # Python 3.11
 cd job-search-score-apply-bot
 pip install -r requirements.txt
-export OPENAI_API_KEY=...  COHERE_API_KEY=...   # session only; or a gitignored .env
+export OPENAI_API_KEY=...  COHERE_API_KEY=...   # session only; or put them in ~/.config/job-search-bot/.env
 python ingest.py                        # builds data/chroma from data/drive
 python app.py                           # http://127.0.0.1:7860
 ```
@@ -79,4 +79,4 @@ Without an OpenAI key the app still runs: scoring falls back to the artifact's o
 
 ## Data and privacy
 
-Everything personal stays in `data/` (gitignored): the Drive mirror, the vector database, the job board, the history export and the drafts. API keys are read from the environment. The notebook checks that no key value appears in any project file. The notebook outputs, `LAB_PROOF.md` and the screenshots in `quality_check/` quote career details, so review them before pushing to a public repository.
+Everything personal stays in `data/` (gitignored): the Drive mirror, the vector database, the job board, the history export and the drafts. API keys are read from the environment or from `~/.config/job-search-bot/.env`, outside the project folder (set `JOB_BOT_ENV_FILE` to use another path). The notebook checks that no key value appears in any project file. The notebook outputs, `LAB_PROOF.md` and the screenshots in `quality_check/` quote career details, so review them before pushing to a public repository.

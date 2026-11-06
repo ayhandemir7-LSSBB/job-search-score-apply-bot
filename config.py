@@ -1,11 +1,13 @@
-"""Paths, keys and model names. Everything is overridable from .env."""
+"""Paths, keys and model names. Everything is overridable from the environment or the env file below."""
 import os
 from pathlib import Path
 
 from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent
-load_dotenv(ROOT / ".env")
+# Keys live outside the project folder so they can never be committed. Exported variables win over the file.
+ENV_FILE = Path(os.getenv("JOB_BOT_ENV_FILE", Path.home() / ".config" / "job-search-bot" / ".env")).expanduser()
+load_dotenv(ENV_FILE)
 
 DATA = ROOT / "data"
 DRIVE_DIR = DATA / "drive"          # local mirror of the Google Drive project folder
